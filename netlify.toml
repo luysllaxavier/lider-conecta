@@ -1,0 +1,4 @@
+# Configuração inicial para um site estático.
+# As funções de backend e o agendamento serão adicionados em etapa posterior.
+[build]
+  publish = "."
