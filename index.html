@@ -1,115 +1,16 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#176b45">
-  <title>Líder Conecta</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">LC</span><span><strong>Líder Conecta</strong><small>Gestão de consultoras</small></span></div>
-    <button id="menuBtn" class="mobile-menu" aria-label="Abrir menu">☰</button>
-    <div class="user-pill"><span class="avatar">L</span><span>Minha conta</span></div>
-  </header>
-
-  <div class="app-shell">
-    <aside id="sidebar" class="sidebar">
-      <p class="nav-label">MENU PRINCIPAL</p>
-      <button class="nav-item active" data-page="inicio">▦ <span>Início</span></button>
-      <button class="nav-item" data-page="consultoras">♙ <span>Consultoras</span></button>
-      <button class="nav-item" data-page="artes">▧ <span>Criar artes</span></button>
-      <button class="nav-item" data-page="campanhas">✉ <span>Campanhas</span></button>
-      <button class="nav-item" data-page="historico">◷ <span>Histórico</span></button>
-      <div class="sidebar-note"><strong>Seu espaço de trabalho</strong><p>Organize contatos e prepare campanhas em um só lugar.</p></div>
-      <p class="sidebar-footer">Versão inicial de demonstração</p>
-    </aside>
-
-    <main class="main">
-      <section id="page-inicio" class="page active">
-        <div class="page-heading"><div><p class="eyebrow">VISÃO GERAL</p><h1>Olá, líder! 👋</h1><p class="muted">Organize sua equipe e prepare suas próximas campanhas.</p></div><button class="primary" data-goto="campanhas">＋ Nova campanha</button></div>
-        <div class="notice"><strong>Modo de demonstração</strong><span>Os dados ficam somente neste navegador. Nenhuma mensagem real é enviada.</span></div>
-        <div class="stats-grid">
-          <article class="stat-card"><span class="stat-icon">♙</span><p>Consultoras cadastradas</p><strong id="statConsultoras">3</strong><small>Na sua lista de demonstração</small></article>
-          <article class="stat-card"><span class="stat-icon">▧</span><p>Artes salvas</p><strong id="statArtes">0</strong><small>Crie artes para suas campanhas</small></article>
-          <article class="stat-card"><span class="stat-icon">✉</span><p>Campanhas preparadas</p><strong id="statCampanhas">0</strong><small>Envios reais ainda não ativados</small></article>
-        </div>
-        <div class="content-grid">
-          <article class="panel"><div class="panel-heading"><div><h2>Acesso rápido</h2><p class="muted">Escolha o que deseja fazer.</p></div></div><div class="quick-actions"><button data-goto="consultoras"><span>♙</span><b>Gerenciar consultoras</b><small>Consultar a lista de contatos</small></button><button data-goto="artes"><span>▧</span><b>Criar uma arte</b><small>Montar uma imagem promocional</small></button><button data-goto="campanhas"><span>✉</span><b>Preparar campanha</b><small>Escolher imagem e destinatárias</small></button></div></article>
-          <article class="panel"><div class="panel-heading"><div><h2>Próximos passos</h2><p class="muted">Para preparar o aplicativo para uso real.</p></div></div><ul class="todo-list"><li><span class="todo-dot done">✓</span><span><b>Interface inicial</b><small>Pronta para testar</small></span></li><li><span class="todo-dot">2</span><span><b>Conectar banco de dados</b><small>Supabase ainda não configurado</small></span></li><li><span class="todo-dot">3</span><span><b>Integrar WhatsApp oficial</b><small>Requer conta e credenciais da Meta</small></span></li></ul></article>
-        </div>
-      </section>
-
-      <section id="page-consultoras" class="page">
-        <div class="page-heading"><div><p class="eyebrow">SUA EQUIPE</p><h1>Consultoras</h1><p class="muted">Cadastre e organize os contatos da sua equipe.</p></div><button id="addConsultantBtn" class="primary">＋ Nova consultora</button></div>
-        <div class="panel"><div class="toolbar"><input id="searchConsultants" type="search" placeholder="Pesquisar por nome ou telefone"><select id="brandFilter" aria-label="Filtrar marca"><option value="">Todas as marcas</option><option>Natura</option><option>Avon</option><option>Ambas</option></select></div>
-          <div class="table-wrap"><table><thead><tr><th>Consultora</th><th>Telefone</th><th>Marca</th><th>Autorização</th></tr></thead><tbody id="consultantsTable"></tbody></table></div>
-          <p class="muted small">Os contatos exibidos são fictícios para demonstração. Substitua-os por dados autorizados.</p>
-        </div>
-      </section>
-
-      <section id="page-artes" class="page">
-        <div class="page-heading"><div><p class="eyebrow">CONTEÚDO PROMOCIONAL</p><h1>Criar artes</h1><p class="muted">Monte uma arte simples ou importe uma imagem do celular.</p></div></div>
-        <div class="editor-grid">
-          <div class="panel editor-controls">
-            <label for="artTitle">Título da arte</label><input id="artTitle" value="Oferta especial!" maxlength="70">
-            <label for="artSubtitle">Texto complementar</label><textarea id="artSubtitle" rows="3" maxlength="180">Confira as novidades da campanha.</textarea>
-            <label for="artPrice">Preço ou chamada</label><input id="artPrice" value="Confira as ofertas">
-            <label for="artColor">Cor de fundo</label><input id="artColor" type="color" value="#f3e8e0">
-            <label for="artImage">Importar imagem da galeria</label><input id="artImage" type="file" accept="image/png,image/jpeg,image/webp">
-            <div class="button-row"><button id="resetArt" class="secondary">Limpar imagem</button><button id="saveArt" class="primary">Salvar arte</button></div>
-            <p class="muted small">Esta versão cria uma arte básica no navegador. Geração de imagens por IA será adicionada após integrar um serviço compatível.</p>
-          </div>
-          <div class="panel preview-panel"><div class="panel-heading"><h2>Pré-visualização</h2><span class="tag">Modelo editável</span></div><div id="artPreview" class="art-preview"><div class="art-decoration">✦</div><div id="previewImageWrap" class="preview-image-wrap hidden"><img id="previewImage" alt="Imagem selecionada"></div><p class="art-kicker">CAMPANHA ESPECIAL</p><h2 id="previewTitle">Oferta especial!</h2><p id="previewSubtitle">Confira as novidades da campanha.</p><div id="previewPrice" class="art-price">Confira as ofertas</div><small>Consulte condições e disponibilidade.</small></div></div>
-        </div>
-        <div class="panel saved-art-panel"><div class="panel-heading"><div><h2>Artes salvas</h2><p class="muted">Artes salvas nesta demonstração.</p></div></div><div id="savedArts" class="saved-arts empty-state">Você ainda não salvou nenhuma arte.</div></div>
-      </section>
-
-      <section id="page-campanhas" class="page">
-        <div class="page-heading"><div><p class="eyebrow">COMUNICAÇÃO</p><h1>Preparar campanha</h1><p class="muted">Escolha uma arte, selecione destinatárias e prepare o envio.</p></div></div>
-        <div class="notice warning"><strong>Envio real desativado</strong><span>Esta versão não envia mensagens pelo WhatsApp. A integração oficial será configurada no servidor em uma etapa posterior.</span></div>
-        <div class="campaign-grid">
-          <div class="panel">
-            <h2>1. Conteúdo da campanha</h2>
-            <label for="campaignName">Nome interno da campanha</label><input id="campaignName" placeholder="Ex.: Lançamentos do ciclo">
-            <label for="campaignMessage">Mensagem ou legenda</label><textarea id="campaignMessage" rows="4" placeholder="Olá, {{nome}}! Confira esta novidade..."></textarea>
-            <label for="campaignArt">Arte para enviar</label><select id="campaignArt"><option value="">Sem arte selecionada</option></select>
-            <label for="campaignMode">Quando deseja enviar?</label><select id="campaignMode"><option value="imediato">Preparar para envio imediato</option><option value="agendado">Agendar para uma data e horário</option></select>
-            <div id="scheduleFields" class="hidden"><label for="campaignDate">Data e hora</label><input id="campaignDate" type="datetime-local"></div>
-          </div>
-          <div class="panel">
-            <div class="panel-heading"><h2>2. Destinatárias</h2><span id="selectedCount" class="tag">0 selecionadas</span></div>
-            <div class="select-actions"><button id="selectAll" class="text-button">Selecionar todas</button><button id="clearSelection" class="text-button">Limpar seleção</button></div>
-            <div id="recipientList" class="recipient-list"></div>
-            <div class="campaign-summary"><span>Destinatárias selecionadas</span><strong id="summaryCount">0</strong></div>
-            <button id="prepareCampaign" class="primary full-width">Salvar campanha de demonstração</button>
-            <p class="muted small">Selecione apenas pessoas que autorizaram receber mensagens promocionais. O envio depende da integração oficial.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="page-historico" class="page">
-        <div class="page-heading"><div><p class="eyebrow">ACOMPANHAMENTO</p><h1>Histórico de campanhas</h1><p class="muted">Veja as campanhas preparadas neste navegador.</p></div></div>
-        <div class="panel"><div id="campaignHistory" class="history-list empty-state">Nenhuma campanha preparada ainda.</div></div>
-      </section>
-
-      <footer class="app-footer">Líder Conecta · Protótipo inicial · Não é um aplicativo oficial da Natura, Avon ou WhatsApp.</footer>
-    </main>
-  </div>
-
-  <dialog id="consultantDialog">
-    <form id="consultantForm" method="dialog">
-      <div class="dialog-heading"><h2>Nova consultora</h2><button type="button" id="closeDialog" class="icon-button" aria-label="Fechar">×</button></div>
-      <label for="newName">Nome</label><input id="newName" required maxlength="100" placeholder="Nome da consultora">
-      <label for="newPhone">Telefone com DDD</label><input id="newPhone" required inputmode="tel" placeholder="(99) 99999-9999">
-      <label for="newBrand">Marca</label><select id="newBrand"><option>Natura</option><option>Avon</option><option>Ambas</option></select>
-      <label class="checkbox-label"><input id="newConsent" type="checkbox"> Autorizou receber mensagens promocionais</label>
-      <p class="muted small">Use apenas contatos reais com autorização apropriada. Os dados desta demonstração ficam no navegador.</p>
-      <button class="primary full-width" type="submit">Salvar consultora</button>
-    </form>
-  </dialog>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#176b52">
+<title>Líder Conecta | CRM & Chatbot</title><link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar"><div class="brand"><div class="brand-mark">LC</div><div><b>Líder Conecta</b><small>CRM • Atendimento inteligente</small></div></div>
+<nav id="nav"><button class="nav-item active" data-page="dashboard">▦ <span>Visão geral</span></button><button class="nav-item" data-page="contacts">♙ <span>Consultoras</span></button><button class="nav-item" data-page="inbox">☏ <span>Caixa de conversas</span><i id="unreadBadge" class="nav-badge">2</i></button><button class="nav-item" data-page="bot">✳ <span>Chatbot</span></button><button class="nav-item" data-page="campaigns">➤ <span>Campanhas</span></button><button class="nav-item" data-page="settings">⚙ <span>Configurações</span></button></nav>
+<div class="sidebar-bottom"><span class="status-dot"></span><span>Modo local ativo</span><small>Seus dados ficam neste navegador até conectar o banco de dados.</small></div></aside>
+<main class="main"><header class="topbar"><button id="menuToggle" class="icon-btn" aria-label="Abrir menu">☰</button><div><div class="eyebrow">PAINEL DE GESTÃO</div><h1 id="pageTitle">Visão geral</h1></div><div class="top-actions"><span class="local-pill"><i></i> Protótipo CRM</span><button id="exportBtn" class="btn btn-light">Exportar dados</button></div></header>
+<div id="pageContent" class="content"></div>
+<footer> LÍDER CONECTA <span>•</span> CRM para equipes Natura e Avon <span class="footer-note">Protótipo: WhatsApp real exige integração oficial.</span></footer></main></div>
+<div id="modalRoot"></div><div id="toast" class="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
