@@ -1,6 +1,6 @@
 // Líder Conecta — configure apenas URL e Publishable key. Nunca use sb_secret_ aqui.
-const SUPABASE_URL = "COLE_AQUI_A_URL_DO_SEU_PROJETO";
-const SUPABASE_PUBLISHABLE_KEY = "COLE_AQUI_SUA_CHAVE_sb_publishable";
+const SUPABASE_URL = "https://cdvmnpwcuickrvwlbrcq.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_KQJnuWKGfoKsXTV1DYCGZg_3fKBQGQ7";
 const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("COLE_AQUI") && SUPABASE_PUBLISHABLE_KEY.startsWith("sb_publishable_");
 const $ = id => document.getElementById(id); let db=null, user=null;
 function msg(id,text,error=false){$(id).textContent=text||"";$(id).classList.toggle("error",error)}
