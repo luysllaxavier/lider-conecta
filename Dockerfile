@@ -6,7 +6,7 @@ WORKDIR /express-docker
 COPY package*.json ./
 
 # Instala as dependências
-RUN npm install--legace-peer-deps- --no-audit --prefer-offline
+RUN npm install --legace-peer-deps- --no-audit --prefer-offline
 
 # Copia todo o código-fonte da aplicação
 COPY . .
