@@ -1,4 +1,5 @@
 FROM node:18-alpine
+
 # Define o diretório de trabalho
 WORKDIR /express-docker
 
