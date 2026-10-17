@@ -1,14 +1,14 @@
 FROM node:18-alpine
-
+# Define o diretório de trabalho
 WORKDIR /express-docker
 
-# Copia os arquivos de dependências
+# Copia primeiro os arquivos de dependências
 COPY package*.json ./
 
 # Instala as dependências
-RUN npm install --legace-peer-deps- --no-audit --prefer-offline
+RUN npm install --legacy-peer-deps --no-audit --prefer-offline
 
-# Copia todo o código-fonte da aplicação
+# Copia o restante do código-fonte da aplicação
 COPY . .
 
 # Gera os arquivos do cliente do Prisma
